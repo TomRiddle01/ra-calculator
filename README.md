@@ -1,4 +1,6 @@
-﻿# Introduction
+﻿[![Build Status](https://travis-ci.org/TomRiddle01/spc-calculator.svg?branch=master)](https://travis-ci.org/TomRiddle01/spc-calculator)
+
+# Introduction
 This project was written for a university course about theoretic computer science.
 
 It is written in Python and can evaluate SPC-Queries on a given database. SPC-queries are a subset of relational algebra where only σ (selection), π (projection) and x (cartesian product) are available.
