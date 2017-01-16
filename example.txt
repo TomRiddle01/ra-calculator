@@ -1,0 +1,16 @@
+People
+Superman | 1938 | Superhero
+Alfred | 1984 | Software Engineer
+TomRiddle01 | 1995 | Software Engineer
+Jesus | 0 | Rockstar
+
+Places
+Hamburg | Germany
+Metropolis | America
+Castle Grayskull | Jerusalem
+
+Living
+Superman | Metropolis
+Alfred | Hamburg
+TomRiddle01 | Hamburg
+Jesus | Castle Grayskull
