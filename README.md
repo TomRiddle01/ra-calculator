@@ -12,8 +12,6 @@ The following usage is also valid.
     python3 spcShell.py <database file>
     python3 spcShell.py <database file> query
 
-# Test
-To run the unittests use `make test`.
 
 ## Commands
 
@@ -43,4 +41,6 @@ Instead of σ and and π you can use * for selection and # for projection.
     ('TomRiddle01',)
 
 
+# Test
+To run the unittests use `make test`.
 
