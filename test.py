@@ -95,7 +95,7 @@ class TestSuite(unittest.TestCase):
 
     def testReadDatabaseFile(self):
         db = DatabaseFile("example.txt")
-        self.assertEqual(len(db), 3)
+        self.assertEqual(len(db), 4)
 
     def testCaseComplete(self):
         db = DatabaseFile("example.txt")
