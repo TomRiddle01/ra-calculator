@@ -295,12 +295,15 @@ class Shell():
         self.I = []
 
     def startShell(self, command=None):
-        if not command:
-            command = sys.stdin
 
-        self.__prompt()
-        for line in command:
-            line = line.strip()
+        while True:
+            if command:
+                line = command
+                command = "exit" # next command is exit
+            else:
+                line = self.__prompt()
+                line = line.strip()
+
             if line == "exit":
                 exit()
             if line.startswith("open"):
@@ -321,11 +324,9 @@ class Shell():
                     print(result.printTable())
                 except Exception as e:
                     print("Query Error", e)
-            self.__prompt()
 
     def __prompt(self):
-        sys.stdout.write('>>')
-        sys.stdout.flush()
+        return input(">>")
 
 
     def openFile(self, name):

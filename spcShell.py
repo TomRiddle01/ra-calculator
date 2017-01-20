@@ -7,7 +7,7 @@ p = spc.Shell()
 if len(sys.argv) > 1:
     p.openFile(sys.argv[1])
 
-commands = []
+command = []
 if len(sys.argv) > 2:
-    commands= [" ".join(sys.argv[2:])]
-p.startShell(commands)
+    command = " ".join(sys.argv[2:])
+p.startShell(command)
