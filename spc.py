@@ -103,6 +103,42 @@ class Cartesian(Query):
                 result.add(row1 + row2)
         return Table("result", result)
 
+# implementation of relative complement
+class Complement(Query):
+    def __init__(self, subquery1, subquery2):
+        self.subquery1 = subquery1
+        self.subquery2 = subquery2
+
+    def __str__(self):
+        return "%s \ %s"%(self.subquery1, self.subquery2)
+
+    def execute(self):
+        table1 = self.subquery1.execute()
+        table2 = self.subquery2.execute()
+        result = set()
+        for row in table1.content:
+            if not row in table2.content:
+                result.add(row)
+        return Table("result", result)
+
+# implementation of union
+class Union(Query):
+    def __init__(self, subquery1, subquery2):
+        self.subquery1 = subquery1
+        self.subquery2 = subquery2
+
+    def __str__(self):
+        return "%s \ %s"%(self.subquery1, self.subquery2)
+
+    def execute(self):
+        table1 = self.subquery1.execute()
+        table2 = self.subquery2.execute()
+        result = table1.content
+        for row in table2.content:
+                result.add(row)
+        return Table("result", result)
+
+
 # a plain table in form of a tuple-list that behaves like a query
 class Table(Query):
     def __init__(self, name, content):
@@ -197,8 +233,15 @@ class ParsedQuery(Query):
             string = string.strip()
             if string.startswith("x"):
                 query, string = self.__seekCartesian(string[1:], query)
+            elif string.startswith("\\"):
+                query, string = self.__seekComplement(string[1:], query)
+            elif string.startswith("~"):
+                query, string = self.__seekUnion(string[1:], query)
+            elif string.startswith("∪"):
+                query, string = self.__seekUnion(string[1:], query)
             else:
                 nested = False
+
         return query, string
 
 
@@ -241,6 +284,19 @@ class ParsedQuery(Query):
         string = string.strip()
         rightQuery, string = self.__seekQuery(string)
         return Cartesian(leftQuery, rightQuery), string
+    
+    def __seekComplement(self, string, leftQuery):
+        string_ = string
+        string = string.strip()
+        rightQuery, string = self.__seekQuery(string)
+        return Complement(leftQuery, rightQuery), string
+    
+    def __seekUnion(self, string, leftQuery):
+        string_ = string
+        string = string.strip()
+        rightQuery, string = self.__seekQuery(string)
+        return Union(leftQuery, rightQuery), string
+
 
 
 # creates a database instance (a list of tables)

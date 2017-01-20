@@ -3,7 +3,8 @@
 # Introduction
 This project was written for a university course about theoretic computer science.
 
-It is written in Python and can evaluate SPC-Queries on a given database. SPC-queries are a subset of relational algebra where only σ (selection), π (projection) and x (cartesian product) are available.
+~~It is written in Python and can evaluate SPC-Queries on a given database. SPC-queries are a subset of relational algebra where only σ (selection), π (projection) and x (cartesian product) are available.~~
+The SPC-Version can now be found on an extra branch. The master branch will develop more features.
 
 # Usage 
 You can use `make shell` to start the database shell or you can just run the spcShell.py file with python3. 
