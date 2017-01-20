@@ -1,4 +1,4 @@
-﻿[![Build Status](https://travis-ci.org/TomRiddle01/spc-calculator.svg?branch=master)](https://travis-ci.org/TomRiddle01/spc-calculator)
+﻿[![Build Status](https://travis-ci.org/TomRiddle01/spc-calculator.svg?branch=master)](https://travis-ci.org/TomRiddle01/ra-calculator)
 
 # Introduction
 This project was written for a university course about theoretic computer science.
