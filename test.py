@@ -95,10 +95,25 @@ class TestSuite(unittest.TestCase):
 
     def testReadDatabaseFile(self):
         db = DatabaseFile("example.txt")
-        self.assertEqual(len(db), 3)
+        self.assertEqual(len(db), 4)
 
     def testCaseComplete(self):
         db = DatabaseFile("example.txt")
         query = ParsedQuery('π1(σ5="Hamburg"(σ1=4(People x Living)))', db)
         self.assertEqual((query.execute().content), set([('Alfred',), ('TomRiddle01',)]))
 
+    def testUnion(self):
+        db = DatabaseFile("example.txt")
+        query = "People ∪ OtherPeople"
+        parsedQuery = ParsedQuery(query, db)
+        result = parsedQuery.execute()
+        # two people are the same in both tables, thus 4+4-2
+        self.assertEqual(6, len(result.content)) 
+
+    def testComplement(self):
+        db = DatabaseFile("example.txt")
+        query = "People \ OtherPeople"
+        parsedQuery = ParsedQuery(query, db)
+        result = parsedQuery.execute()
+        # two people are the same in both tables, thus 4-2
+        self.assertEqual(2, len(result.content)) 
